@@ -17,3 +17,11 @@ output "private_data_subnet_ids" {
 output "nat_gateway_id" {
   value = module.vpc.nat_gateway_id
 }
+
+output "ecr_repository_urls" {
+  value = module.ecr.repository_urls
+}
+
+output "ecr_repository_names" {
+  value = module.ecr.repository_names
+}

@@ -52,3 +52,17 @@ module "vpc" {
 
   tags = local.common_tags
 }
+
+module "ecr" {
+  source = "../../modules/ecr"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  repositories = [
+    "claims-api",
+    "frontend"
+  ]
+
+  tags = local.common_tags
+}
