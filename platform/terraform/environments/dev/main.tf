@@ -66,3 +66,19 @@ module "ecr" {
 
   tags = local.common_tags
 }
+
+module "eks" {
+  source = "../../modules/eks"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  cluster_name    = "enterprise-eks-gitops-dev"
+  cluster_version = "1.30"
+
+  vpc_id = module.vpc.vpc_id
+
+  private_subnet_ids = module.vpc.private_app_subnet_ids
+
+  tags = local.common_tags
+}
