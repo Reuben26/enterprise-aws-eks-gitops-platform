@@ -1,0 +1,48 @@
+replicaCount: 2
+
+image:
+  repository: 398370989042.dkr.ecr.us-east-1.amazonaws.com/enterprise-eks-gitops-dev-claims-api
+  pullPolicy: Always
+  tag: "dev"
+
+serviceAccount:
+  create: true
+  name: ""
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  className: alb
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+  hosts:
+    - host: ""
+      paths:
+        - path: /
+          pathType: Prefix
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+
+livenessProbe:
+  path: /health
+  port: 8080
+  initialDelaySeconds: 20
+  periodSeconds: 20
+
+readinessProbe:
+  path: /health
+  port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 10
