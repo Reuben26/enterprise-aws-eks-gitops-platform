@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: claims-dev
+  labels:
+    name: claims-dev
+    environment: dev

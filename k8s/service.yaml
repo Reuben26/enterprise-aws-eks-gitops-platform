@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: claims-api-service
+  namespace: claims-dev
+  labels:
+    app: claims-api
+spec:
+  type: ClusterIP
+  selector:
+    app: claims-api
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
