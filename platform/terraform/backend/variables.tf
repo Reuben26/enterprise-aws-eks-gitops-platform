@@ -11,5 +11,5 @@ variable "environment" {
 }
 
 variable "owner" {
-  default = "Reuben"
+  default = "Chidi"
 }
