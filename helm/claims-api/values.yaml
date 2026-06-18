@@ -22,6 +22,9 @@ ingress:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: /health
     external-dns.alpha.kubernetes.io/hostname: claims-api.dev.yaya626.com
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:398370989042:certificate/203a5f1d-2897-49a3-86b3-de2d10f1c559
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
   hosts:
     - host: ""
       paths:
