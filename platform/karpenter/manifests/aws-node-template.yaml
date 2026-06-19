@@ -1,0 +1,10 @@
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: default
+spec:
+  subnetSelector:
+    karpenter.sh/discovery: enterprise-eks-gitops-dev
+  securityGroupSelector:
+    karpenter.sh/discovery: enterprise-eks-gitops-dev
+  instanceProfile: KarpenterNodeRole-enterprise-eks-gitops-dev
